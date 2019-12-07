@@ -1,0 +1,3 @@
+﻿  Game.cpp
+d:\stuff\projects\gluengine\world.h(1): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  GluEngine.vcxproj -> D:\stuff\Projects\GluEngine\x64\Debug\GluEngine.exe
