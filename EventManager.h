@@ -70,9 +70,10 @@ struct Binding{
 	int c;
 	
 };
-
+enum class StateType;
 using Bindings = std::unordered_map<std::string, Binding*>;
-using CallBacks = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+using CallBackContainer = std::unordered_map<std::string, std::function<void(EventDetails*)>>;
+using CallBacks = std::unordered_map<StateType, CallBackContainer>;
 
 class EventManager{
 public:
@@ -86,19 +87,26 @@ public:
 
 	 
 	template<class T>
-	bool AddCallBack(const std::string& l_name,
+	bool AddCallBack(StateType l_state, const std::string& l_name,
 					 void(T::*l_func)(EventDetails*), T* l_instance){
-
+		auto itr = m_callbacks.emplace(l_state, CallBackContainer()).first;
 		auto temp = std::bind(l_func, l_instance, std::placeholders::_1);
-		return m_callbacks.emplace(l_name, temp).second;
+		return itr->second.emplace(l_name, temp).second;
 	}
-	void RemoveCallBack(const std::string& l_name){
-		m_callbacks.erase(l_name);
+	bool RemoveCallBack(StateType l_state, const std::string& l_name){
+		auto itr = m_callbacks.find(l_state);
+		if(itr==m_callbacks.end()){ return false; }
+		// now find the actual name
+		auto itr2 = itr->second.find(l_name);
+		if(itr2==itr->second.end()){ return false; }
+		// remove it
+		itr->second.erase(l_name);
+		return true;
 	}
 
 	void HandleEvent(sf::Event& l_event);
 	void Update();
-
+	void SetCurrentState(StateType l_state);
 	sf::Vector2i GetMousePos(sf::RenderWindow* l_wind = nullptr){
 		return (l_wind ? sf::Mouse::getPosition(*l_wind) : sf::Mouse::getPosition());
 	}
@@ -107,6 +115,7 @@ private:
 	void LoadBindings();
 	Bindings m_bindings;
 	CallBacks m_callbacks;
+	StateType m_currentState;
 	bool m_hasFocus;
 };
 

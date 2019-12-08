@@ -2,8 +2,7 @@
 
 
 
-Game::Game(): m_window("Sanayak", sf::Vector2u(800, 600)),
-m_snake(m_world.GetBlockSize()), m_world(sf::Vector2u(800, 600)){
+Game::Game(): m_window("StateManager", sf::Vector2u(800, 600)), m_stateManager(&m_context){
 	m_mushroomTexture.loadFromFile("assets/zombie.png");
 	m_mushroom.setTexture(m_mushroomTexture);
 	m_mushroom.setOrigin(m_mushroomTexture.getSize().x/2,
@@ -11,7 +10,13 @@ m_snake(m_world.GetBlockSize()), m_world(sf::Vector2u(800, 600)){
 	m_mushroom.setPosition(m_window.GetWindowSize().x/2,
 						   m_window.GetWindowSize().y/2);
 	m_increment = sf::Vector2i(40, 40);
-	m_window.GetEventManager()->AddCallBack("Move", &Game::MoveSprite, this);
+
+	m_context.m_window = &m_window;
+	m_context.m_eventManager = m_window.GetEventManager();
+	m_context.m_eventManager->AddCallBack(StateType(0), "Window_close", &Window::Close, m_context.m_window);
+	m_context.m_eventManager->AddCallBack(StateType(0), "FullScreen_toggle", &Window::ToggleFullScreen, m_context.m_window);
+	m_stateManager.SwitchTo(StateType::Intro);
+	
 }
 
 
@@ -35,7 +40,7 @@ void Game::HandleInput(){
 
 void Game::Update(){
 	m_window.Update();
-	
+	m_stateManager.Update(m_elpased);
 	/*float timestep = 1.0/m_snake.GetSpeed();
 
 	if(m_elpased.asSeconds()>=timestep){
@@ -50,16 +55,22 @@ void Game::Update(){
 	}*/
 }
 
+void Game::LateUpdate(){
+	m_stateManager.ProcessRequests();
+	RestartClock();
+}
+
 void Game::Render(){
 	m_window.BeginDraw();
 	/*m_world.Render(*m_window.GetRenderWindow());
 	m_snake.Render(*m_window.GetRenderWindow());*/
-	m_window.Draw(m_mushroom);
+	/*m_window.Draw(m_mushroom);*/
+	m_stateManager.Draw();
 	m_window.EndDraw();
 }
 
 void Game::RestartClock(){
-	m_elpased += m_clock.restart();
+	m_elpased = m_clock.restart();
 }
 
 sf::Time Game::GetElpased(){

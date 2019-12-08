@@ -1,7 +1,5 @@
 #include "Window.h"
-#include "Snake.h"
-#include "World.h"
-
+#include "StateManager.h"
 #pragma once
 class Game{
 public:
@@ -11,6 +9,7 @@ public:
 
 	void HandleInput();
 	void Update();
+	void LateUpdate();
 	void Render();
 	void RestartClock();
 	sf::Time GetElpased();
@@ -25,8 +24,7 @@ private:
 	sf::Vector2i m_increment;
 	sf::Clock m_clock;
 	sf::Time m_elpased;
-
-	World m_world;
-	Snake m_snake;
+	SharedContext m_context;
+	StateManager m_stateManager;
 };
 

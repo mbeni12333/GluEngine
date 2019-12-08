@@ -120,15 +120,33 @@ void EventManager::Update(){
 		}
 
 		if(bind->m_events.size()==bind->c){
-			auto callItr = m_callbacks.find(bind->m_name);
+			// find the callbacks for the current state
+			auto StateCallBacks = m_callbacks.find(m_currentState);
+			// other state
+			auto OtherCallBacks = m_callbacks.find(StateType(0));
 
-			if(callItr!=m_callbacks.end()){
-				callItr->second(&bind->m_details);
+			if(StateCallBacks!=m_callbacks.end()){
+				auto callItr = StateCallBacks->second.find(bind->m_name);
+
+				if(callItr!=StateCallBacks->second.end()){
+					callItr->second(&bind->m_details);
+				}
+			}
+			if(OtherCallBacks!=m_callbacks.end()){
+				auto callItr = OtherCallBacks->second.find(bind->m_name);
+
+				if(callItr!=OtherCallBacks->second.end()){
+					callItr->second(&bind->m_details);
+				}
 			}
 		}
 		bind->c = 0;
 		bind->m_details.Clear();
 	}
+}
+
+void EventManager::SetCurrentState(StateType  l_state){
+	m_currentState = l_state;
 }
 
 void EventManager::LoadBindings(){

@@ -10,10 +10,10 @@ void main(int argc, char** argv[]) {
 
 	while(!game.GetWindow()->isDone()){
 
-		game.HandleInput();
 		game.Update();
 		game.Render();
-		game.RestartClock();
+		game.LateUpdate();
+		
 	}
 
 }

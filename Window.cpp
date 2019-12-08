@@ -29,7 +29,7 @@ void Window::Update(){
 		if(event.type == sf::Event::LostFocus){
 			m_isFocused = false;
 			m_eventManager.setFocus(false);
-			m_isDone = true;
+			//m_isDone = true;
 		}else if(event.type == sf::Event::GainedFocus){
 			m_isFocused = true;
 			m_eventManager.setFocus(true);
@@ -82,8 +82,8 @@ void Window::Setup(const std::string & l_title, const sf::Vector2u & l_size){
 	m_isDone = false;
 	m_isFullScreen = false;
 	m_isFocused = true;
-	m_eventManager.AddCallBack("FullScreen_toggle", &Window::ToggleFullScreen, this);
-	m_eventManager.AddCallBack("Window_close", &Window::Close, this);
+	/*m_eventManager.AddCallBack("FullScreen_toggle", &Window::ToggleFullScreen, this);
+	m_eventManager.AddCallBack("Window_close", &Window::Close, this);*/
 	Create();
 }
 
