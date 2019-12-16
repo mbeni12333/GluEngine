@@ -76,15 +76,27 @@ sf::RenderWindow* Window::GetRenderWindow(){
 
 void Window::Close(EventDetails* l_event){ m_isDone = true; }
 
+sf::FloatRect Window::GetViewSpace(){
+	sf::Vector2f viewCenter = m_window.getView().getCenter();
+	sf::Vector2f viewSize = m_window.getView().getSize();
+	sf::Vector2f viewSizeHalf(viewSize.x/2.0, viewSize.y/2.0);
+	sf::FloatRect viewSpace(viewCenter-viewSizeHalf, viewSize);
+	return viewSpace;
+}
+
 void Window::Setup(const std::string & l_title, const sf::Vector2u & l_size){
 	m_windowTitle = l_title;
 	m_windowSize = l_size;
 	m_isDone = false;
 	m_isFullScreen = false;
 	m_isFocused = true;
+
 	/*m_eventManager.AddCallBack("FullScreen_toggle", &Window::ToggleFullScreen, this);
 	m_eventManager.AddCallBack("Window_close", &Window::Close, this);*/
+	//m_window.setFramerateLimit(60);
+	//m_window.setVerticalSyncEnabled(true);
 	Create();
+	m_eventManager.SetWindow(&m_window);
 }
 
 void Window::Destroy(){}

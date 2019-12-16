@@ -34,6 +34,7 @@ void State_Intro::OnCreate(){
 void State_Intro::OnDestroy(){
 	EventManager* eventManager = m_stateManager->GetSharedContext()->m_eventManager;
 	eventManager->RemoveCallBack(StateType::Intro, "Intro_Continue");
+	std::cout<<"Intro Destroyed "<<std::endl;
 }
 
 void State_Intro::Activate(){}

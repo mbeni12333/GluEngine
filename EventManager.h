@@ -5,6 +5,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
+
 enum class EventType{
 	KeyDown = sf::Event::KeyPressed,
 	KeyUP = sf::Event::KeyReleased,
@@ -107,6 +108,7 @@ public:
 	void HandleEvent(sf::Event& l_event);
 	void Update();
 	void SetCurrentState(StateType l_state);
+	void SetWindow(sf::RenderWindow* l_window);
 	sf::Vector2i GetMousePos(sf::RenderWindow* l_wind = nullptr){
 		return (l_wind ? sf::Mouse::getPosition(*l_wind) : sf::Mouse::getPosition());
 	}
@@ -116,6 +118,7 @@ private:
 	Bindings m_bindings;
 	CallBacks m_callbacks;
 	StateType m_currentState;
+	sf::RenderWindow* m_window;
 	bool m_hasFocus;
 };
 

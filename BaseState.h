@@ -36,8 +36,13 @@ public:
 	StateManager* GetStateManager() const{
 		return m_stateManager;
 	}
+	sf::View& GetView(){
+		return m_view;
+	}
+
 protected:
 	StateManager* m_stateManager;
+	sf::View m_view;
 	bool m_transparent;
 	bool m_transcendent;
 };

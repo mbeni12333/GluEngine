@@ -117,7 +117,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <Link>
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-s.lib;sfml-window-s.lib;sfml-system-s.lib;opengl32.lib;freetype.lib;winmm.lib;gdi32.lib;advapi32.lib;user32.lib</AdditionalDependencies>
+      <AdditionalDependencies>shlwapi.lib;opengl32.lib;openal32.lib;gdi32.lib;winmm.lib;freetype.lib;flac.lib;vorbisenc.lib;vorbisfile.lib;vorbis.lib;ogg.lib;ws2_32.lib;kernel32.lib;sfml-main.lib;sfml-system-s.lib;sfml-window-s.lib;sfml-graphics-s.lib;sfml-network-s.lib;sfml-audio-s.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <SubSystem>Windows</SubSystem>
     </Link>
     <ClCompile>
       <AdditionalIncludeDirectories>C:\SFML-2.5.1\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
@@ -127,7 +128,8 @@
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <Link>
       <AdditionalLibraryDirectories>C:\SFML-2.5.1\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
-      <AdditionalDependencies>sfml-graphics-d.lib;sfml-window-d.lib;sfml-system-d.lib;opengl32.lib;winmm.lib;gdi32.lib;freetype.lib</AdditionalDependencies>
+      <AdditionalDependencies>shlwapi.lib;sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-network-d.lib;sfml-audio-d.lib</AdditionalDependencies>
+      <SubSystem>NotSet</SubSystem>
     </Link>
     <ClCompile>
       <PreprocessorDefinitions>%(PreprocessorDefinitions)</PreprocessorDefinitions>
@@ -135,27 +137,48 @@
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <Image Include="assets\zombie.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="ClassDiagram.cd" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Anim_Base.cpp" />
+    <ClCompile Include="Anim_Direction.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Snake.cpp" />
+    <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
+    <ClCompile Include="State_Game.cpp" />
     <ClCompile Include="State_Intro.cpp" />
+    <ClCompile Include="State_Main.cpp" />
+    <ClCompile Include="State_Path.cpp" />
+    <ClCompile Include="State_Paused.cpp" />
     <ClCompile Include="Window.cpp" />
     <ClCompile Include="World.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Anim_Base.h" />
+    <ClInclude Include="Anim_Direction.h" />
     <ClInclude Include="BaseState.h" />
+    <ClInclude Include="Direction.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="ResourceManager.h" />
+    <ClInclude Include="SpriteSheet.h" />
+    <ClInclude Include="State_Path.h" />
+    <ClInclude Include="TextureManager.h" />
+    <ClInclude Include="Utilities.h" />
     <ClInclude Include="Snake.h" />
     <ClInclude Include="StateManager.h" />
+    <ClInclude Include="State_Game.h" />
     <ClInclude Include="State_Intro.h" />
+    <ClInclude Include="State_Main.h" />
+    <ClInclude Include="State_Paused.h" />
     <ClInclude Include="Window.h" />
     <ClInclude Include="World.h" />
-  </ItemGroup>
-  <ItemGroup>
-    <Image Include="assets\zombie.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

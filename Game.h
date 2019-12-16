@@ -14,14 +14,9 @@ public:
 	void RestartClock();
 	sf::Time GetElpased();
 	Window* GetWindow();
-	void MoveSprite(EventDetails * l_details);
 private:
-	void MoveMushRoom();
 
 	Window m_window;
-	sf::Texture m_mushroomTexture;
-	sf::Sprite m_mushroom;
-	sf::Vector2i m_increment;
 	sf::Clock m_clock;
 	sf::Time m_elpased;
 	SharedContext m_context;

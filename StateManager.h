@@ -3,6 +3,11 @@
 #include <functional>
 #include "Window.h"
 #include "State_Intro.h"
+#include "State_Main.h"
+#include "State_Game.h"
+#include "State_Paused.h"
+#include "State_Path.h"
+
 #pragma once
 
 enum class StateType{

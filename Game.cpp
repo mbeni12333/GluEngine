@@ -2,14 +2,7 @@
 
 
 
-Game::Game(): m_window("StateManager", sf::Vector2u(800, 600)), m_stateManager(&m_context){
-	m_mushroomTexture.loadFromFile("assets/zombie.png");
-	m_mushroom.setTexture(m_mushroomTexture);
-	m_mushroom.setOrigin(m_mushroomTexture.getSize().x/2,
-						 m_mushroomTexture.getSize().y/2);
-	m_mushroom.setPosition(m_window.GetWindowSize().x/2,
-						   m_window.GetWindowSize().y/2);
-	m_increment = sf::Vector2i(40, 40);
+Game::Game(): m_window("PathFinder", sf::Vector2u(800, 800)), m_stateManager(&m_context){
 
 	m_context.m_window = &m_window;
 	m_context.m_eventManager = m_window.GetEventManager();
@@ -41,16 +34,16 @@ void Game::HandleInput(){
 void Game::Update(){
 	m_window.Update();
 	m_stateManager.Update(m_elpased);
-	/*float timestep = 1.0/m_snake.GetSpeed();
+	
+
+	/*float timestep = 1.0/30.0f;
 
 	if(m_elpased.asSeconds()>=timestep){
-		m_snake.Tick();
-		m_world.Update(m_snake);
+		
+
 		m_elpased -= sf::seconds(timestep);
 
-		if(m_snake.HasLost()){
-			m_snake.Reset();
-		}
+		
 
 	}*/
 }
@@ -61,12 +54,25 @@ void Game::LateUpdate(){
 }
 
 void Game::Render(){
-	m_window.BeginDraw();
-	/*m_world.Render(*m_window.GetRenderWindow());
-	m_snake.Render(*m_window.GetRenderWindow());*/
-	/*m_window.Draw(m_mushroom);*/
-	m_stateManager.Draw();
-	m_window.EndDraw();
+	//float timestep = 1.0/60.0f;
+
+	//if(m_elpased.asSeconds()>=timestep){
+
+		m_window.BeginDraw();
+		/*m_world.Render(*m_window.GetRenderWindow());
+		m_snake.Render(*m_window.GetRenderWindow());*/
+		/*m_window.Draw(m_mushroom);*/
+		//if(m_elpased<sf::milliseconds(15))
+		
+		m_stateManager.Draw();
+
+		//std::cout<<"FPS = "<<1.0f/m_elpased.asSeconds()<<std::endl;
+		m_window.EndDraw();
+		//m_elpased -= sf::seconds(timestep);
+	//} else{
+	//	sf::sleep(m_elpased - sf::seconds(timestep));
+	//}
+
 }
 
 void Game::RestartClock(){
@@ -81,7 +87,7 @@ Window* Game::GetWindow(){
 	return &m_window;
 }
 
-void Game::MoveMushRoom(){
+/*void Game::MoveMushRoom(){
 	sf::Vector2u l_windowSize = m_window.GetWindowSize();
 	sf::Vector2u l_textSize = m_mushroomTexture.getSize();
 
@@ -105,4 +111,4 @@ void Game::MoveSprite(EventDetails* l_details){
 	m_mushroom.setPosition(mousepos.x, mousepos.y);
 	std::cout<<"Moving sprite to "<<mousepos.x<<":"<<mousepos.y<<std::endl;
 
-}
+}*/

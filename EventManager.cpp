@@ -107,7 +107,11 @@ void EventManager::Update(){
 					break;
 				case(EventType::Mouse):
 					if(sf::Mouse::isButtonPressed(sf::Mouse::Button(e_itr.second.m_code))){
-						
+						sf::Vector2i mouse_pos = GetMousePos(m_window);
+
+						bind->m_details.m_mouse.x = mouse_pos.x;
+						bind->m_details.m_mouse.y = mouse_pos.y;
+
 						if(bind->m_details.m_keyCode!=-1){
 							bind->m_details.m_keyCode = e_itr.second.m_code;
 						}
@@ -147,6 +151,10 @@ void EventManager::Update(){
 
 void EventManager::SetCurrentState(StateType  l_state){
 	m_currentState = l_state;
+}
+
+void EventManager::SetWindow(sf::RenderWindow * l_window){
+	m_window = l_window;
 }
 
 void EventManager::LoadBindings(){

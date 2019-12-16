@@ -1,7 +1,9 @@
+#pragma once
 #include <SFML/Graphics.hpp>
 #include <string>
 #include "EventManager.h"
-#pragma once
+
+class EvenManager;
 
 class Window{
 	
@@ -26,6 +28,7 @@ public:
 	void Draw(sf::Drawable& l_drawable);
 	sf::RenderWindow* GetRenderWindow();
 	void Close(EventDetails* l_event);
+	sf::FloatRect GetViewSpace();
 private:
 	void Setup(const std::string& l_title, const sf::Vector2u& l_size);
 	void Destroy();
