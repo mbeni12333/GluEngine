@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <functional>
 #include "Window.h"
+#include "TextureManager.h"
 #include "State_Intro.h"
 #include "State_Main.h"
 #include "State_Game.h"
@@ -17,6 +18,7 @@ struct SharedContext{
 	SharedContext():m_window(nullptr), m_eventManager(nullptr){}
 	Window* m_window;
 	EventManager* m_eventManager;
+	TextureManager* m_textureManager;
 };
 using StateContainer = std::vector<std::pair<StateType, BaseState*>>;
 using TypeContainer = std::vector<StateType>;

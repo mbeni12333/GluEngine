@@ -21,5 +21,6 @@ private:
 	sf::Time m_elpased;
 	SharedContext m_context;
 	StateManager m_stateManager;
+	TextureManager m_textureManager;
 };
 

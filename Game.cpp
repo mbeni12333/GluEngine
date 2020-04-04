@@ -2,10 +2,11 @@
 
 
 
-Game::Game(): m_window("PathFinder", sf::Vector2u(800, 800)), m_stateManager(&m_context){
+Game::Game(): m_window("PathFinder", sf::Vector2u(800, 800)), m_stateManager(&m_context),m_textureManager(){
 
 	m_context.m_window = &m_window;
 	m_context.m_eventManager = m_window.GetEventManager();
+	m_context.m_textureManager = &m_textureManager;
 	m_context.m_eventManager->AddCallBack(StateType(0), "Window_close", &Window::Close, m_context.m_window);
 	m_context.m_eventManager->AddCallBack(StateType(0), "FullScreen_toggle", &Window::ToggleFullScreen, m_context.m_window);
 	m_stateManager.SwitchTo(StateType::Intro);

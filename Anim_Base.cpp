@@ -12,11 +12,14 @@ Anim_Base::Anim_Base():
 	m_frameActionStart(-1),
 	m_frameActionEnd(-1),
 	m_loop(false),
-	m_playing(false){}
+	m_playing(false),
+	m_nextAnimation("Idle"){}
 
 Anim_Base::~Anim_Base(){}
 
-void Anim_Base::SetLooping(const bool & l_loop){}
+void Anim_Base::SetLooping(const bool & l_loop){
+	m_loop = l_loop;
+}
 
 void Anim_Base::SetSpriteSheet(SpriteSheet * l_spriteSheet){
 	m_spriteSheet = l_spriteSheet;
@@ -29,8 +32,17 @@ void Anim_Base::SetFrame(const unsigned int & l_frame){
 	}
 }
 
+void Anim_Base::SetFrameTime(const float & l_time){
+	m_frameTime = l_time;
+}
+
 void Anim_Base::SetName(const std::string & l_name){
 	m_name = l_name;
+	if(m_nextAnimation=="")m_nextAnimation = l_name;
+}
+
+void Anim_Base::SetNext(const std::string & l_name){
+	m_nextAnimation = l_name;
 }
 
 bool Anim_Base::IsInAction(){

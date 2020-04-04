@@ -1,0 +1,13 @@
+﻿  Anim_Base.cpp
+  Anim_Direction.cpp
+  Game.cpp
+  SpriteSheet.cpp
+  StateManager.cpp
+  State_Game.cpp
+  State_Intro.cpp
+  State_Main.cpp
+  State_Path.cpp
+  State_Paused.cpp
+  main.cpp
+  Generating Code...
+  GluEngine.vcxproj -> D:\stuff\Projects\GluEngine\x64\Release\GluEngine.exe

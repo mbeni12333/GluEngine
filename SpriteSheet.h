@@ -18,14 +18,19 @@ public:
 	void CropSprite(const sf::IntRect& l_rect);
 	void SetSpriteSize(const sf::Vector2i& l_size);
 	sf::Vector2i GetSpriteSize();
+	void SetSpriteScale(const sf::Vector2f& l_scale);
 	void SetSpritePosition(const sf::Vector2f& l_pos);
+	sf::Vector2f GetPosition();
 	void SetDirection(Direction l_dir);
 	Direction GetDirection();
+
+
+
 	bool LoadSheet(const std::string& l_file);
 	void ReleaseSheet();
 
 	Anim_Base* GetCurrentAnim();
-
+	Anim_Base* GetAnim(const std::string& l_name);
 	bool setAnimation(const std::string& l_name,
 					  const bool& l_play = false,
 					  const bool& l_loop = false);

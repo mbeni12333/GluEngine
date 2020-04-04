@@ -141,13 +141,16 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Node.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Anim_Base.cpp" />
     <ClCompile Include="Anim_Direction.cpp" />
     <ClCompile Include="EventManager.cpp" />
     <ClCompile Include="Game.cpp" />
+    <ClCompile Include="Graph.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="Node.cpp" />
     <ClCompile Include="Snake.cpp" />
     <ClCompile Include="SpriteSheet.cpp" />
     <ClCompile Include="StateManager.cpp" />
@@ -163,9 +166,12 @@
     <ClInclude Include="Anim_Base.h" />
     <ClInclude Include="Anim_Direction.h" />
     <ClInclude Include="BaseState.h" />
+    <ClInclude Include="blocks.h" />
     <ClInclude Include="Direction.h" />
     <ClInclude Include="EventManager.h" />
     <ClInclude Include="Game.h" />
+    <ClInclude Include="Graph.h" />
+    <ClInclude Include="Heap.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="SpriteSheet.h" />
     <ClInclude Include="State_Path.h" />

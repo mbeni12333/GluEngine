@@ -22,15 +22,26 @@ sf::Vector2i SpriteSheet::GetSpriteSize(){
 	return m_spriteSize;
 }
 
+void SpriteSheet::SetSpriteScale(const sf::Vector2f & l_scale){
+	m_sprite.scale(l_scale);
+}
+
 void SpriteSheet::SetSpritePosition(const sf::Vector2f & l_pos){
 	m_sprite.setPosition(l_pos);
 }
 
+sf::Vector2f SpriteSheet::GetPosition(){
+	return m_sprite.getPosition();
+}
+
 void SpriteSheet::SetDirection(Direction l_dir){
 	if(m_direction==l_dir){ return; }
-
+	std::string h = (unsigned int)l_dir ? "Left" : "Right";
+	std::cout<<"Diction : "<<  h <<std::endl;
 	m_direction = l_dir;
+	m_sprite.scale(-1, 1);
 	m_currentAnimation->CropSprite();
+
 }
 
 Direction SpriteSheet::GetDirection(){
@@ -136,6 +147,12 @@ Anim_Base * SpriteSheet::GetCurrentAnim(){
 	return m_currentAnimation;
 }
 
+Anim_Base * SpriteSheet::GetAnim(const std::string & l_name){
+	auto anim = m_animations.find(l_name);
+
+	return anim == m_animations.end() ? nullptr : anim->second;
+}
+
 bool SpriteSheet::setAnimation(const std::string & l_name,
 							   const bool & l_play,
 							   const bool & l_loop){
@@ -143,10 +160,14 @@ bool SpriteSheet::setAnimation(const std::string & l_name,
 
 	auto itr = m_animations.find(l_name);
 	if(itr==m_animations.end()){ return false; }
+
 	if(m_currentAnimation==itr->second){ return false; }
+
 	if(m_currentAnimation){ m_currentAnimation->Stop();}
+
 	m_currentAnimation = itr->second;
 	m_currentAnimation->SetLooping(l_loop);
+
 	if(l_play){ m_currentAnimation->Play(); }
 	m_currentAnimation->CropSprite();
 	return true;

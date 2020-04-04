@@ -14,7 +14,9 @@ public:
 	void SetLooping(const bool& l_loop);
 	void SetSpriteSheet(SpriteSheet* l_spriteSheet);
 	void SetFrame(const unsigned int& l_frame);
+	void SetFrameTime(const float& l_time);
 	void SetName(const std::string& l_name);
+	void SetNext(const std::string& l_name);
 	bool IsInAction();
 
 	void Play();
@@ -52,5 +54,6 @@ protected:
 	std::string m_name;
 	SpriteSheet* m_spriteSheet;
 
+	std::string m_nextAnimation;
 };
 

@@ -31,6 +31,9 @@
     <Filter Include="Algorithms">
       <UniqueIdentifier>{90c592b9-ab26-4e57-8108-35bff7159a14}</UniqueIdentifier>
     </Filter>
+    <Filter Include="path">
+      <UniqueIdentifier>{6fefbc02-d920-4b9d-8c29-c1e1928efd84}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <Image Include="assets\zombie.png">
@@ -39,6 +42,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="ClassDiagram.cd" />
+    <None Include="Node.h">
+      <Filter>path</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Game.cpp">
@@ -84,7 +90,13 @@
       <Filter>sprite</Filter>
     </ClCompile>
     <ClCompile Include="State_Path.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>path</Filter>
+    </ClCompile>
+    <ClCompile Include="Graph.cpp">
+      <Filter>path</Filter>
+    </ClCompile>
+    <ClCompile Include="Node.cpp">
+      <Filter>path</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -143,7 +155,16 @@
       <Filter>sprite</Filter>
     </ClInclude>
     <ClInclude Include="State_Path.h">
+      <Filter>path</Filter>
+    </ClInclude>
+    <ClInclude Include="Graph.h">
+      <Filter>path</Filter>
+    </ClInclude>
+    <ClInclude Include="Heap.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="blocks.h">
+      <Filter>path</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

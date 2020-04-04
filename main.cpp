@@ -9,7 +9,7 @@ void main(int argc, char** argv[]) {
 	Game game;
 	sf::Clock clock;
 	sf::Time elpased;
-	float time_step = 1.0f/300.0f;
+	float time_step = 1.0f/60.0f;
 
 	while(!game.GetWindow()->isDone()){
 

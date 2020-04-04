@@ -4,7 +4,7 @@ StateManager::StateManager(SharedContext * l_shared):m_sharedContext(l_shared){
 
 	RegisterState<State_Intro>(StateType::Intro);
 	RegisterState<State_Main>(StateType::MainMenu);
-	RegisterState<State_Path>(StateType::Game);
+	RegisterState<State_Game>(StateType::Game);
 	RegisterState<State_Paused>(StateType::Paused);
 }
 
