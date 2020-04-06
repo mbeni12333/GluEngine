@@ -8,3 +8,5 @@ main features:
 * EventManager / Binding from file
 * DataDriven 
 * SpriteSheet / animations
+
+![alt spritesheet animation](images/spritesheet.gif)
