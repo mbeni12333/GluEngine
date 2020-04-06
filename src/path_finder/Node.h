@@ -29,8 +29,8 @@ private:
 
 };
 inline bool operator<=(Node& a, Node& b){
-	if(a.GetFcost()<b.GetFcost()||
-	   a.GetFcost()==b.GetFcost()&&a.GetHcost()<=b.GetHcost()){
+	if( (a.GetFcost() < b.GetFcost()) ||
+	    ((a.GetFcost() == b.GetFcost()) && (a.GetHcost() <= b.GetHcost()))){
 		return true;
 	}
 	return false;

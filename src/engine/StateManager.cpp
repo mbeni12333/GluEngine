@@ -2,10 +2,12 @@
 
 StateManager::StateManager(SharedContext * l_shared):m_sharedContext(l_shared){
 
+    /*Replace with automatic state registration from file*/
 	RegisterState<State_Intro>(StateType::Intro);
 	RegisterState<State_Main>(StateType::MainMenu);
 	RegisterState<State_Game>(StateType::Game);
 	RegisterState<State_Paused>(StateType::Paused);
+
 }
 
 StateManager::~StateManager(){

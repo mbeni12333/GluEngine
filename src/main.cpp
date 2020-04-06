@@ -3,10 +3,10 @@
 #include <SFML/Graphics.hpp>
 #include "Game.h"
 
-void main(int argc, char** argv[]) {
+int main(int argc, char* argv[]) {
 
 	
-	Game game;
+	Game game("PathFinder");
 	sf::Clock clock;
 	sf::Time elpased;
 	float time_step = 1.0f/60.0f;
@@ -25,4 +25,5 @@ void main(int argc, char** argv[]) {
 		
 	}
 
+	return 0;
 }

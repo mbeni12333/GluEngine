@@ -5,7 +5,7 @@
 
 class TextureManager: public ResourceManager<TextureManager, sf::Texture>{
 public:
-	TextureManager():ResourceManager("Textures.cfg"){};
+	TextureManager():ResourceManager("assets/Textures.cfg"){};
 
 	sf::Texture* Load(const std::string& l_path){
 		// allocate memory

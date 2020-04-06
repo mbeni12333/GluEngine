@@ -2,15 +2,16 @@
 
 #include "BaseState.h"
 #include "EventManager.h"
-#include "blocks.h"
+#include "../path_finder/blocks.h"
 
-#include "Graph.h"
+#include "../path_finder/Graph.h"
 
 #include <thread>
 #include <mutex>
 #include <condition_variable>
 
 
+class Graph;
 
 class State_Path:
 	public BaseState{

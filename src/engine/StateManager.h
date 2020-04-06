@@ -12,7 +12,7 @@
 #pragma once
 
 enum class StateType{
-	Intro = 1, MainMenu, Game, Paused, GameOver, Credits
+	Intro = 1, MainMenu, Game, Path, Snake, Paused, GameOver, Credits
 };
 struct SharedContext{
 	SharedContext():m_window(nullptr), m_eventManager(nullptr){}
@@ -44,6 +44,7 @@ private:
 	void CreateState(const StateType& l_type);
 	void RemoveState(const StateType& l_type);
 
+	/*Delegate to a registrer class*/
 	template<class T>
 	void RegisterState(const StateType& l_type){
 		m_stateFactory[l_type] = [this]() -> BaseState*{

@@ -1,9 +1,9 @@
 #pragma once
 
-#include "State_Path.h"
+#include "../engine/State_Path.h"
 #include "Node.h"
 #include "Heap.h"
-
+#include <list>
 class State_Path;
 
 class Graph{

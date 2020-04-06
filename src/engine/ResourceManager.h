@@ -2,6 +2,7 @@
 #include <unordered_map>
 #include <string>
 #include <sstream>
+#include <fstream>
 #include "Utilities.h"
 
 template<typename Derived, typename T>
@@ -18,7 +19,7 @@ public:
 	}
 
 	std::string GetPath(const std::string& l_id){
-		auto path = m_paths.find(l_id);
+		auto paths = m_paths.find(l_id);
 
 		return(paths!=m_paths.end() ? paths->second : "");
 	}
